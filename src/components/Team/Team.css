@@ -1,45 +1,115 @@
-.team{
+.team {
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    gap: 1rem;
+    gap: 3rem;
+    padding: 4rem 2rem;
+    background: linear-gradient(135deg, #f7f9fc, #ffffff);
 }
 
-.team-image{
+.team-image {
     display: flex;
     justify-content: center;
     align-items: center;
+    max-width: 1200px;
+    width: 100%;
 }
 
-.team-content{
+.team-image img {
+    width: 100%;
+    height: auto;
+    border-radius: 16px;
+    box-shadow: var(--shadow-lg);
+}
+
+.team-content {
     display: flex;
     flex-direction: column;
     padding: 1rem 2rem;
     gap: 2.5rem;
-
+    max-width: 800px;
+    text-align: center;
 }
 
-.team-content>span{
-    font-size: 3rem;
-    line-height: 3rem;
-    font-weight: 900;
+.team-content > span {
+    font-size: clamp(2rem, 5vw, 3rem);
+    line-height: 1.2;
+    font-weight: 800;
+    color: var(--primary);
+    position: relative;
 }
 
-.team-content>div{
+.team-content > span::after {
+    content: '';
+    position: absolute;
+    bottom: -12px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80px;
+    height: 4px;
+    background: var(--accent-teal);
+    border-radius: 2px;
+}
+
+.team-content > div {
     display: flex;
     flex-direction: column;
     justify-content: center;
-    gap: .5rem;
+    gap: 1rem;
 }
 
-.team-content>div>span:nth-child(1){
-    font-weight: 900;
-    font-size: 1.3rem;
+.team-content > div > span:nth-child(1) {
+    font-weight: 700;
+    font-size: 1.5rem;
+    color: var(--primary);
 }
 
-.team-content>a{
-    padding: .75rem 2rem;
+.team-content > div > span:nth-child(2) {
+    color: #4a5568;
+    line-height: 1.6;
+    font-size: 1.1rem;
+}
+
+.team-btn {
+    background: var(--primary);
+    color: white;
+    padding: 1rem 2.5rem;
+    border-radius: 50px;
+    font-size: 1.1rem;
+    font-weight: 600;
+    text-decoration: none;
+    align-self: center;
+    box-shadow: var(--shadow-md);
+    border: none;
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+
+.team-btn:hover {
+    background: var(--accent-teal);
+    box-shadow: var(--shadow-lg);
+    transform: translateY(-2px);
+}
+
+@media (max-width: 768px) {
+    .team {
+        padding: 3rem 1rem;
+        gap: 2rem;
+    }
+
+    .team-content {
+        padding: 1rem;
+    }
+
+    .team-content > span {
+        font-size: 2rem;
+    }
+
+    .team-btn {
+        width: 100%;
+        max-width: 300px;
+    }
 }
 
 

@@ -5,36 +5,53 @@ import LogoCircle from "../../assets/logo-circle.png"
 import { motion } from 'framer-motion'
 
 const Header = () => {
-
     const [toggle, setToggle] = useState(false)
+    const menuItems = ["home", "about", "gallery", "schedule", "contact"]
+    
     return (
         <header>
-            <nav>
+            <nav className="container">
                 <div className="header__logo">
-                    <img src={LogoCircle} alt="" />
+                    <img src={LogoCircle} alt="Doze Swimming Club Logo" />
                     <span>Doze Swimming Club</span>
                 </div>
-                <div className="header__menu">
-                  
-                    <div className="header__navbar-menu-mobile">
-                        <HiMenuAlt4 onClick={() => setToggle(!toggle)} />
-                        {toggle && (
-                            <motion.div
-                                initial={{ x: 150 }}
-                                animate={{ x: 0 }}
-                                transition={{ type: 'tween', ease: 'linear' }}
-                            >
+                
+                {/* Desktop Menu */}
+                <div className="header__menu-desktop">
+                    <ul>
+                        {menuItems.map((item, i) => (
+                            <li key={i}>
+                                <a href={`#${item}`}>{item}</a>
+                            </li>
+                        ))}
+                    </ul>
+                    <a href="#contact" className="btn btn-primary">Book Now</a>
+                </div>
+
+                {/* Mobile Menu */}
+                <div className="header__menu-mobile">
+                    <HiMenuAlt4 onClick={() => setToggle(!toggle)} />
+                    {toggle && (
+                        <motion.div
+                            initial={{ x: 300 }}
+                            animate={{ x: 0 }}
+                            transition={{ type: 'spring', stiffness: 100 }}
+                            className="mobile-menu"
+                        >
+                            <div className="mobile-menu-header">
+                                <img src={LogoCircle} alt="Logo" />
                                 <HiX onClick={() => setToggle(false)} />
-                                <ul>
-                                    {["home", "about", "gallery", "contact"].map((item, i) => (
-                                        <li key={i}>
-                                            <a href={`#${item}`} onClick={() => setToggle(false)}>{item}</a>
-                                        </li>
-                                    ))}
-                                </ul>
-                            </motion.div>
-                        )}
-                    </div>
+                            </div>
+                            <ul>
+                                {menuItems.map((item, i) => (
+                                    <li key={i}>
+                                        <a href={`#${item}`} onClick={() => setToggle(false)}>{item}</a>
+                                    </li>
+                                ))}
+                            </ul>
+                            <a href="#contact" className="btn btn-primary">Book Now</a>
+                        </motion.div>
+                    )}
                 </div>
             </nav>
         </header>
